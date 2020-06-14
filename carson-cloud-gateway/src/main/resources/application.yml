@@ -26,7 +26,7 @@ zuul:
       service-id: carson-cloud-product
     business:
       path: /business/**
-      service-id: carson-cloud-business
+      service-id: carson-cloud-user
     order:
       path: /order/**
       service-id: carson-cloud-order
@@ -43,3 +43,14 @@ data-filter:
     - /business/report/**
   user-login-path: #登录请求地址,可设置多个,会触发LoginAddJwtPostFilter
     - /business/login/**
+
+ribbon:
+  ReadTimeout: 60000
+  ConnectTimeout: 60000
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 60000
