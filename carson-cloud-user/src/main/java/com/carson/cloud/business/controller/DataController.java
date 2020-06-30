@@ -8,6 +8,8 @@ import com.carson.cloud.business.viewmodel.GetDataOVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -37,4 +39,18 @@ public class DataController {
     result.setData(user);
     return result;
 	}
+    
+    @PostMapping(value = "/regist/addUser")
+    Result<UserEntity> addUser(@RequestBody UserEntity info) {
+    	userService.registUser(info);
+    	UserEntity user = userService.findUserByName(info.getUserName());
+    	Result<UserEntity> result = new Result<>();
+    	if(user!=null) {
+    		result.setData(user);
+        }else {
+            result.setData(null);
+        	result.setCode(510);
+    	}
+        return result;
+    }
 }

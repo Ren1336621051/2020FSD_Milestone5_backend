@@ -39,7 +39,7 @@ zuul:
 
 data-filter:
   auth-path: #需要验证token的请求地址,可设置多个,会触发JwtAuthPreFilter
-    - /business/data/**
+    - /business/data/getUserById
     - /business/report/**
   user-login-path: #登录请求地址,可设置多个,会触发LoginAddJwtPostFilter
     - /business/login/**

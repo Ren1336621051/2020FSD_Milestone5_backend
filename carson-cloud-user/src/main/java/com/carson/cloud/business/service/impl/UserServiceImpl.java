@@ -29,7 +29,7 @@ public class UserServiceImpl implements UserService{
 	
 	@Override
 	public void registUser(UserEntity user){
-		
+		userDao.registUser(user);
 		//create user
 		//send mail
 		

@@ -35,9 +35,9 @@ public interface UserDao extends JpaRepository<UserEntity, Integer>{
 	public UserEntity findById(String id);
 
 	@Transactional
-	@Query(value = "insert into s_user (id,username,password,usertype,email,mobileNum,crtDate)"
-			+ "values(#{id},#{username},#{password},#{usertype},#{email},#{mobileNum},#{crtDate})",nativeQuery = true)
-	public void registUser(UserEntity user);
+	@Modifying
+	@Query(value = "insert into user.s_user (user_name,password,user_type,email,mobile_num) values (:#{#user.userName},:#{#user.password},:#{#user.userType},:#{#user.email},:#{#user.mobileNum})",nativeQuery = true)
+	public void registUser(@Param("user") UserEntity user);
 	
 	@Modifying
 	@Transactional

@@ -17,7 +17,7 @@ spring:
      hibernate:
         database-platform: org.hibernate.dialect.MySQLDialect
         ddl-auto: update
-        show-sql: true
+        connection.show-sql: true
 logging:
   file:
     name: ${logging.file.path}/application.log
